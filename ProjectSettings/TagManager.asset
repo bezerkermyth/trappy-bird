@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -14,11 +15,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Foreground
+  - Background
+  - Middleground
+  - Kill
   - 
   - 
   - 
@@ -45,11 +46,14 @@ TagManager:
   - name: Background
     uniqueID: 1708111991
     locked: 0
-  - name: Foreground
-    uniqueID: 3099724891
-    locked: 0
   - name: ground
     uniqueID: 2959214833
+    locked: 0
+  - name: Middleground
+    uniqueID: 2883685561
+    locked: 0
+  - name: Foreground
+    uniqueID: 3099724891
     locked: 0
   - name: Player
     uniqueID: 48338119

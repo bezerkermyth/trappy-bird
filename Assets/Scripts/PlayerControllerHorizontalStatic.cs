@@ -11,30 +11,33 @@ public class PlayerControllerHorizontalStatic : PhysicsObject
     public bool flappyJump = true;
 
     private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    //private Animator animator;
 
     private GameObject bgCamera;
 
     private float bgSpeed;
 
+
     // Use this for initialization
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
 
 
         CameraController cmct = Camera.main.GetComponent<CameraController>();
-        bgSpeed = cmct.speed;
+        //bgSpeed = cmct.speed;
+
     }
 
     protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
 
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            move.x = Input.GetAxis("Horizontal") * maxSpeed + bgSpeed;
+        if (horizontalControls)
+        {     
+            //move.x = Input.GetAxis("Horizontal") * maxSpeed + bgSpeed;
+            move.x = Input.GetAxis("Horizontal") * maxSpeed;
         }
         
 
@@ -61,10 +64,11 @@ public class PlayerControllerHorizontalStatic : PhysicsObject
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        //animator.SetBool("grounded", grounded);
+        //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
         if (horizontalControls)
         targetVelocity = move ;
+
     }
 }
