@@ -1,34 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SimpleReset : MonoBehaviour {
+public class SimpleReset : MonoBehaviour
+{
+    [SerializeField]
+    private string _sceneId = "SampleScene";
 
-	// Use this for initialization
-	void Start () {
-		
+    [SerializeField]
+    private PlayerController _player;
+
+    void Update () 
+    {
+        if (_player.Dead)
+            SceneManager.LoadScene (_sceneId);
 	}
-
-    public GameObject target;
-
-    // Update is called once per frame
-    void Update () {
-		        if (!target)
-        {
-            Application.LoadLevel("SampleScene");
-        }
-	}
-
-
-    
-
-
-    //void Reset()
-    //{
-    //    //Output the message to the Console
-    //    Debug.Log("Reset");
-    //    if (!target)
-    //        target = GameObject.FindWithTag("Player");
-    //}
 }
-

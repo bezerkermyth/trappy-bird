@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class KillPlayer : MonoBehaviour {
-
-
+public class KillPlayer : MonoBehaviour
+{
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("entered collision zone");
-        if (collision.gameObject.tag == "Player")
-            Destroy(collision.gameObject);
+        PlayerController controller = collision.gameObject.GetComponent<PlayerController> ();
+
+        if (controller != null)
+        {
+            Debug.Log ("Player entered kill zone!");
+            controller.Die ();
+        }
     }
-
-
 }

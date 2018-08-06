@@ -1,59 +1,32 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
-public class PlayerControllerVanilla : PhysicsObject
+public class PlayerController : PhysicsObject2D
 {
-    
-    public float maxSpeed = 7;
-    public float jumpTakeOffSpeed = 7;
+    public float MoveSpeed = 7;
+    public float JumpPower = 7;
+    public bool Dead;
 
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
 
-    private GameObject bgCamera;
-
-    private float bgSpeed;
-
-    // Use this for initialization
-    void Awake()
+    void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-
-
-        CameraController cmct = Camera.main.GetComponent<CameraController>();
-        bgSpeed = cmct.speed;
+        Dead = false;
+        _spriteRenderer.enabled = true;
     }
 
     protected override void ComputeVelocity()
     {
-        Vector2 move = Vector2.zero;
+        TargetVelocity.x = MoveSpeed;
 
-        move.x = Input.GetAxis("Horizontal");
-        move.x = bgSpeed*10;
+        if (Input.GetButtonDown ("Jump"))
+            Velocity.y = JumpPower;
+        //else if (Velocity.y > 0)
+        //    Velocity.y = Velocity.y * 0.5f;
+    }
 
-        if (Input.GetButtonDown("Jump") && grounded)
-        {
-            velocity.y = jumpTakeOffSpeed;
-        }
-        else if (Input.GetButtonUp("Jump"))
-        {
-            if (velocity.y > 0)
-            {
-                velocity.y = velocity.y * 0.5f;
-            }
-        }
-
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
-        {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
-        }
-
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-
-        targetVelocity = move * maxSpeed;
+    public void Die() {
+        Dead = true;
+        _spriteRenderer.enabled = false;
     }
 }

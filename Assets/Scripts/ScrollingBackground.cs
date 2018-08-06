@@ -1,83 +1,50 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
-public class ScrollingBackgroundParallax : MonoBehaviour
+public class ScrollingBackground : MonoBehaviour
 {
-    public bool scrolling, parallax; 
+    public float BackgroundSize;
 
-    public float backgroundSize;
-    public float parallaxSpeed;
+    private Transform _cameraTransform;
+    private Transform[] _layers;
+    private float _viewZone = 10;
+    private int _leftIndex;
+    private int _rightIndex;
 
-    private Transform cameraTransform;
-    private Transform[] layers;
-    private float viewZone = 10;
-    private int leftIndex;
-    private int rightIndex;
-    private float lastCameraX;
-
-    // Use this for initialization
     private void Start()
     {
-           
-        cameraTransform = Camera.main.transform;
-        lastCameraX = cameraTransform.position.x;
-        layers = new Transform[transform.childCount];
+        _cameraTransform = Camera.main.transform;
+        _layers = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
-            layers[i] = transform.GetChild(i);
+            _layers[i] = transform.GetChild(i);
 
-        leftIndex = 0;
-        rightIndex = layers.Length - 1;
-
+        _leftIndex = 0;
+        _rightIndex = _layers.Length - 1;
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        if (parallax)
-        {
-            float deltaX = cameraTransform.position.x - lastCameraX;
-            transform.position += Vector3.right * (deltaX * parallaxSpeed);
-        }
-
-        lastCameraX = cameraTransform.position.x;
-
-        if (scrolling)
-        { 
-            if (cameraTransform.position.x < (layers[leftIndex].transform.position.x + viewZone))
-                ScrollLeft();
-            if (cameraTransform.position.x > (layers[rightIndex].transform.position.x - viewZone))
-                ScrollRight();
-                ////manual update
-                //if (Input.GetKeyDown(KeyCode.A))
-                //    ScrollLeft();
-                //if (Input.GetKeyDown(KeyCode.D))
-                //    ScrollRight();
-        }
+        if (_cameraTransform.position.x < (_layers[_leftIndex].transform.position.x + _viewZone))
+            ScrollLeft();
+        if (_cameraTransform.position.x > (_layers[_rightIndex].transform.position.x - _viewZone))
+            ScrollRight();
     }
-
 
     private void ScrollLeft()
     {
-        //int lastRight = rightIndex;
-        layers[rightIndex].position = Vector3.right * (layers[leftIndex].position.x - backgroundSize);
-        leftIndex = rightIndex;
-        rightIndex--;
-        if (rightIndex < 0)
-            rightIndex = layers.Length - 1;
-
+        _layers[_rightIndex].position = Vector3.right * (_layers[_leftIndex].position.x - BackgroundSize);
+        _leftIndex = _rightIndex;
+        _rightIndex--;
+        if (_rightIndex < 0)
+            _rightIndex = _layers.Length - 1;
     }
+
     private void ScrollRight()
     {
-        //int lastLeft = leftIndex;
-        layers[leftIndex].position = Vector3.right * (layers[rightIndex].position.x + backgroundSize);
-        rightIndex = leftIndex;
-        leftIndex++;
-        if (leftIndex == layers.Length)
-            leftIndex = 0;
-
+        _layers[_leftIndex].position = Vector3.right * (_layers[_rightIndex].position.x + BackgroundSize);
+        _rightIndex = _leftIndex;
+        _leftIndex++;
+        if (_leftIndex == _layers.Length)
+            _leftIndex = 0;
     }
-
-
 }
