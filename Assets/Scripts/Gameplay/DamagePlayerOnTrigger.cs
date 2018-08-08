@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-public class KillPlayer : MonoBehaviour
+public class DamagePlayerOnTrigger : MonoBehaviour
 {
+    [SerializeField]
+    private int _damage = 1;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController controller = collision.gameObject.GetComponent<PlayerController> ();
 
         if (controller != null)
-        {
-            Debug.Log ("Player entered kill zone!");
-            controller.Die ();
-        }
+            controller.TakeDamage (_damage);
     }
 }

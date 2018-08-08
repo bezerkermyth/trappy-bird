@@ -9,6 +9,9 @@ public class PlayerController : PhysicsObject2D
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
 
+    [SerializeField]
+    private LivesCounter _livesCounter;
+
     void Start()
     {
         Dead = false;
@@ -21,8 +24,14 @@ public class PlayerController : PhysicsObject2D
 
         if (Input.GetButtonDown ("Jump"))
             Velocity.y = JumpPower;
-        //else if (Velocity.y > 0)
-        //    Velocity.y = Velocity.y * 0.5f;
+    }
+
+    public void TakeDamage(int amount = 1)
+    {
+        _livesCounter.UpdateLives (_livesCounter.NumLives - amount);
+
+        if (_livesCounter.NumLives < 1)
+            Die ();
     }
 
     public void Die() {
