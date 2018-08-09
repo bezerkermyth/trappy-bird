@@ -2,7 +2,11 @@
 
 public class PlayerController : PhysicsObject2D
 {
-    public float MoveSpeed = 7;
+    public float MaxMoveSpeed = 7;
+    public float Acceleration = 4;
+    public float IdleDeceleration = 14;
+    public bool QuickTurn = true;
+    public float QuickTurnFactor = 2.5f;
     public float JumpPower = 7;
     public bool Dead;
 
@@ -18,12 +22,61 @@ public class PlayerController : PhysicsObject2D
         _spriteRenderer.enabled = true;
     }
 
+    //Keep input code in this method.
     protected override void ComputeVelocity()
     {
-        TargetVelocity.x = MoveSpeed;
+        float moveDirection = Input.GetAxis ("Horizontal");
+
+        if (moveDirection != 0)
+        {
+            if (QuickTurn)
+                HandleMoveQuickTurn (moveDirection);
+            else
+                HandleMove (moveDirection);
+        } 
+        else HandleDecelerate ();
 
         if (Input.GetButtonDown ("Jump"))
-            Velocity.y = JumpPower;
+            Jump ();
+    }
+
+    //Does not handle zero input (that is for HandleDecelerate)
+    void HandleMove (float direction)
+    {
+        float velocityDelta = direction * Acceleration * Time.deltaTime;
+
+        TargetVelocity.x = Velocity.x + velocityDelta;
+        if (Mathf.Abs (TargetVelocity.x) > MaxMoveSpeed)
+            TargetVelocity.x = Mathf.Sign (TargetVelocity.x) * MaxMoveSpeed;
+    }
+
+    //Does not handle zero input (that is for HandleDecelerate)
+    void HandleMoveQuickTurn (float direction)
+    {
+        float velocityDelta = direction * Acceleration * Time.deltaTime;
+
+        if (Mathf.Sign (velocityDelta) != Mathf.Sign (Velocity.x))
+            velocityDelta *= QuickTurnFactor;
+
+        TargetVelocity.x = Velocity.x + velocityDelta;
+        if (Mathf.Abs (TargetVelocity.x) > MaxMoveSpeed)
+            TargetVelocity.x = Mathf.Sign (TargetVelocity.x) * MaxMoveSpeed;
+    }
+
+    //Only handles zero input
+    void HandleDecelerate()
+    {
+        float velocityDelta = Mathf.Sign (Velocity.x) * IdleDeceleration * Time.deltaTime;
+
+        if (Mathf.Abs (velocityDelta) >= Mathf.Abs (Velocity.x))
+            TargetVelocity.x = 0;
+        else
+            TargetVelocity.x = Velocity.x - velocityDelta;
+    }
+
+    void Jump () 
+    {
+        Velocity.y = JumpPower;
     }
 
     public void TakeDamage(int amount = 1)

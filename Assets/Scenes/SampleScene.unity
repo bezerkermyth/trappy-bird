@@ -1007,7 +1007,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinGroundNormalY: 0.65
   GravityModifier: 2.5
-  MoveSpeed: 7
+  MaxMoveSpeed: 10
+  Acceleration: 17.5
+  IdleDeceleration: 35
+  QuickTurn: 1
+  QuickTurnFactor: 3.5
   JumpPower: 11
   Dead: 0
   _spriteRenderer: {fileID: 709491043}
