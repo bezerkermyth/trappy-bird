@@ -1,53 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class PauseMenu : MonoBehaviour 
 {
-
 	public static bool GameIsPaused = false;
-	public GameObject pauseMenuUI;
-	// Update is called once per frame
+
+    [SerializeField]
+	private GameObject _pauseMenuUI;
+
+    [SerializeField]
+    private Button _pauseButton;
+
+    [SerializeField]
+    private string _mainMenuSceneId = "MainMenu";
+
 	void Update () 
 	{
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
-			if(GameIsPaused)
-			{
-				Resume();
-			}
-			else
-			{
-				Pause();
-			}
+            if (GameIsPaused)
+                Resume ();
+            else
+                Pause ();
 		}	
 	}
 
 	public void Resume()
 	{
-		pauseMenuUI.SetActive(false);
+		_pauseMenuUI.SetActive(false);
+        _pauseButton.enabled = true;
 		Time.timeScale = 1f;
 		GameIsPaused = false;
 	}
 
-	void Pause()
+	public void Pause()
 	{
-		pauseMenuUI.SetActive(true);
+		_pauseMenuUI.SetActive(true);
+        _pauseButton.enabled = false;
 		Time.timeScale = 0;
 		GameIsPaused = true;
-	
 	}
 
 	public void ReturnToMainMenu()
 	{
-		Resume();
-		SceneManager.LoadScene("MainMenu");
+        Resume ();
+        SceneManager.LoadScene(_mainMenuSceneId);
 	}
 
 	public void RestartLevel()
 	{
-		Resume();
-		Debug.Log("restarting: "  + SceneManager.GetActiveScene().name);
+        Resume ();
+		Debug.Log("Restarting: "  + SceneManager.GetActiveScene().name);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
