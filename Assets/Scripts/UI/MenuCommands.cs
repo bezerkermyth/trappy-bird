@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class MenuCommands : MonoBehaviour 
 {
     [SerializeField]
-    private string _sceneId = "SampleScene";
+    private string _sceneId = "Level_01";
     private bool _playClicked;
 
 	void Start ()
