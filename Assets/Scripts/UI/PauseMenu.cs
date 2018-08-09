@@ -40,11 +40,14 @@ public class PauseMenu : MonoBehaviour
 
 	public void ReturnToMainMenu()
 	{
+		Resume();
 		SceneManager.LoadScene("MainMenu");
 	}
 
 	public void RestartLevel()
 	{
+		Resume();
+		Debug.Log("restarting: "  + SceneManager.GetActiveScene().name);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
