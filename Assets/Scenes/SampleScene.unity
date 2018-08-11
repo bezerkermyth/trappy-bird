@@ -584,9 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isActivated: 0
-  target: {fileID: 105906837}
-  dropSpeed: 10
-  targetRigidbody: {fileID: 105906841}
+  target: {fileID: 105906841}
 --- !u!61 &263028195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1125,6 +1123,8 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 114589142094009322, guid: b0c9571ed9f95784b8d4b8344b7f090b, type: 2}
+    - {fileID: 114710429537433498, guid: b0c9571ed9f95784b8d4b8344b7f090b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b0c9571ed9f95784b8d4b8344b7f090b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &499252797
@@ -4117,9 +4117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isActivated: 0
-  target: {fileID: 526835024}
-  dropSpeed: 10
-  targetRigidbody: {fileID: 526835028}
+  target: {fileID: 526835028}
 --- !u!61 &2019302402
 BoxCollider2D:
   m_ObjectHideFlags: 0

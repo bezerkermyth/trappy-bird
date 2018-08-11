@@ -15,16 +15,16 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private string _mainMenuSceneId = "MainMenu";
 
-	void Update () 
-	{
-		if(Input.GetKeyDown(KeyCode.Escape))
-		{
-            if (GameIsPaused)
-                Resume ();
-            else
-                Pause ();
-		}	
-	}
+	// void Update () 
+	// {
+	// 	if(Input.GetKeyDown(KeyCode.Escape))
+	// 	{
+    //         if (GameIsPaused)
+    //             Resume ();
+    //         else
+    //             Pause ();
+	// 	}	
+	// }
 
 	public void Resume()
 	{
