@@ -16,6 +16,12 @@ public class PlayerController : PhysicsObject2D
     [SerializeField]
     private LivesCounter _livesCounter;
 
+    [SerializeField]
+    private OverlapByTagNode _crushNodeA;
+
+    [SerializeField]
+    private OverlapByTagNode _crushNodeB;
+
     void Start()
     {
         Dead = false;
@@ -25,6 +31,8 @@ public class PlayerController : PhysicsObject2D
     //Keep input code in this method.
     protected override void ComputeVelocity()
     {
+        HandleCrushDeaths ();
+
         float moveDirection = Input.GetAxis ("Horizontal");
 
         if (moveDirection != 0)
@@ -77,6 +85,12 @@ public class PlayerController : PhysicsObject2D
     void Jump () 
     {
         Velocity.y = JumpPower;
+    }
+
+    void HandleCrushDeaths ()
+    {
+        if (_crushNodeA.Overlapped && _crushNodeB.Overlapped)
+            Die ();
     }
 
     public void TakeDamage(int amount = 1)

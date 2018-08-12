@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class LivesCounter : MonoBehaviour {
-
+public class LivesCounter : MonoBehaviour
+{
     [SerializeField]
     private int _startingLives = 3;
 
