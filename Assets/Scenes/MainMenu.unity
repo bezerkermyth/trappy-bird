@@ -453,7 +453,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 845925712}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -628,6 +628,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneId: SampleScene
+--- !u!1 &1910606889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1947863676737714, guid: 6e1035172f256cf48b6a41e0a8e02046,
+    type: 2}
+  m_PrefabInternal: {fileID: 811889309}
+--- !u!114 &1910606890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1910606889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fd9f885841b3348adf153089127e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitsPerSecond: 1
+  _direction: {x: 1, y: 0}
 --- !u!1 &1915151646
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,7 +732,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 2003299760}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
@@ -725,29 +743,6 @@ Canvas:
   m_SortingLayerID: 842082553
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &2003299757 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1077697164330738, guid: 6e1035172f256cf48b6a41e0a8e02046,
-    type: 2}
-  m_PrefabInternal: {fileID: 811889309}
---- !u!114 &2003299758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2003299757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05fd9f885841b3348adf153089127e4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unitsPerSecond: 3.5
-  _direction: {x: 1, y: 0}
---- !u!20 &2003299760 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 20792858120552994, guid: 6e1035172f256cf48b6a41e0a8e02046,
-    type: 2}
-  m_PrefabInternal: {fileID: 811889309}
 --- !u!1001 &2135572723
 Prefab:
   m_ObjectHideFlags: 0

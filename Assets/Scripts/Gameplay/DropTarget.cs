@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
 
-public class DropTarget : MonoBehaviour {
+public class DropTarget : MonoBehaviour
+{
+    [SerializeField]
+    private Rigidbody2D _target;
+    private bool _activated = false;
 
-	[SerializeField]
-	private bool _isActivated = false;
-
-	public Rigidbody2D target;
-
-	private void OnTriggerEnter2D(Collider2D collision)
+	private void OnTriggerEnter2D (Collider2D collision)
     {
-		_isActivated = true;
+        if (collision.gameObject.CompareTag("Player"))
+		    _activated = true;
     }
 
-	void Update()
+	void Update ()
 	{
-		if(_isActivated)
-		{
-			target.gravityScale = 5;
-		}
+		if (_activated)
+            _target.gravityScale = 5;
     }
 }
