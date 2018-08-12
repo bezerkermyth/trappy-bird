@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ConstantMove : MonoBehaviour 
+public class ConstantMove : MonoBehaviour
 {
     [SerializeField]
     private float _unitsPerSecond = 1;
