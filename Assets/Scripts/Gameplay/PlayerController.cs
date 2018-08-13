@@ -101,7 +101,8 @@ public class PlayerController : PhysicsObject2D
             Die ();
     }
 
-    public void Die() {
+    public void Die()
+    {
         Dead = true;
         _spriteRenderer.enabled = false;
     }

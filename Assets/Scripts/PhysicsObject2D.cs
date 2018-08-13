@@ -17,7 +17,7 @@ public class PhysicsObject2D : MonoBehaviour
     protected List<RaycastHit2D> HitBufferList = new List<RaycastHit2D>(16);
 
     protected const float MIN_MOVE_DISTANCE = 0.001f;
-    protected const float SHELL_RADIUS = 0.01f;
+    protected const float SHELL_RADIUS = 0.005f;
 
     void OnEnable()
     {
