@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class SimpleReset : MonoBehaviour
 {
     [SerializeField]
-    private string _sceneId = "SampleScene";
+    private string _sceneId = "Level1";
 
     [SerializeField]
     private PlayerController _player;
