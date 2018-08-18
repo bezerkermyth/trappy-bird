@@ -2,8 +2,13 @@
 
 public class TripWire : MonoBehaviour
 {
-    public Transform PlayerTransform;
+    private Transform PlayerTransform;
     public GameObject Projectile;
+
+    private void Start()
+    {
+        PlayerTransform = GameObject.Find("Player").transform;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
