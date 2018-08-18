@@ -17,10 +17,10 @@ public class PlayerController : PhysicsObject2D
     private LivesCounter _livesCounter;
 
     [SerializeField]
-    private OverlapByTagNode _crushNodeA;
+    private CrushNode _crushNodeA;
 
     [SerializeField]
-    private OverlapByTagNode _crushNodeB;
+    private CrushNode _crushNodeB;
 
     void Start()
     {

@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Obstacle
   - Crushing
+  - Trip
   layers:
   - Default
   - TransparentFX
@@ -17,11 +18,11 @@ TagManager:
   - 
   - 
   - Player
-  - Foreground
-  - Background
-  - Middleground
-  - Kill
-  - 
+  - Platforms
+  - PhysicsObstacles
+  - NonPhysicsObstacles
+  - Triggers
+  - CrushNodes
   - 
   - 
   - 
